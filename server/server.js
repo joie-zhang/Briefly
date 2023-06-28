@@ -1,10 +1,9 @@
 const path = require('path');
 const express = require('express');
 
-// Connect controllers
-// const userController = require('./controllers/userController');
 // Connect routers
-// const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api');
+const dbRouter = require('./routes/db');
 
 const PORT = 3000;
 
@@ -24,7 +23,14 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 /**
  * define route handlers
  */
-// app.use('/api', apiRouter);
+
+// root
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/index.html'));
+});
+
+app.use('/api', apiRouter);
+app.use('/database', dbRouter);
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('Page not found; please try again.'));

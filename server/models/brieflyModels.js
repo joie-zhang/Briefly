@@ -17,10 +17,11 @@ const Schema = mongoose.Schema;
 // sets a schema for the 'articles' collection
 const articlesSchema = new Schema({
   title: { type: String, required: true },
+  author: { type: String },
   publishedOn: { type: Date, required: true },
-  createdAt: { type: Date, default: Date.now },
   text: { type: String, required: true },
-  summary: { type: String, default: 'Not yet summarized' }
+  summary: { type: String, default: 'Not yet summarized' }, 
+  createdAt: { type: Date, default: Date.now },
 })
 
 // create a model for the 'articles' collection to be exported
