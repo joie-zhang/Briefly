@@ -42,6 +42,7 @@ dbController.getArticleSummary = (req, res, next) => {
   // get the url from req.query
   // const url = 'https://apnews.com/article/connecticut-state-police-false-traffic-stop-reporting-eb5bd9d5a5ff8a37b98fcb469a7babd0';
   const { url } = req.query;
+  console.log('GET request received, in dbController rn: ', req.query);
   // console.log('req.query: ', req.query);
   // query database for article summary
   // models.Articles.findOne({ _id: '649cb96dfae6795fd699d150' })

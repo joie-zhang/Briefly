@@ -2,18 +2,22 @@ import React, { useState } from 'react';
 
 // input field for article URL
 const App = () => {
-  const [summary, setSummary] = useState('No summary generated yet');
+  // const [summary, setSummary] = useState('No summary retrieved yet');
 
   return (
     <div>
       <h3>Summarize an article</h3>
       <div>
-        <p>Insert the article URL here: </p>
+        <p>Insert your article URL here: </p>
         <PostInputField />
+      </div>
+      <div>
+        <p>Or, insert both your URL and article body here for a more accurate summary: </p>
+        <PostInputField2 />
       </div>
       <h3>Retrieve a previous article summary</h3>
       <div>
-        <p>Insert the article URL here: </p>
+        <p>Insert your article URL here: </p>
         <GetInputField />
       </div>
     </div>
@@ -23,9 +27,21 @@ const App = () => {
 const PostInputField = () => {
   return (
     <div>
-      <form method="POST" action='/api/'>
-        <input name="url" type="text" placeholder="url" />
-        <input type='submit' value="api" />
+      <form method="POST" action='/api/url/'>
+        <input name="url" type="text" placeholder="URL" />
+        <input type='submit' value="Search" />
+      </form>
+    </div>
+  );
+}
+
+const PostInputField2 = () => {
+  return (
+    <div>
+      <form method="POST" action='/api/text/'>
+        <input name="url" type="text" placeholder="URL" />
+        <input name="text" type="text" placeholder="Body" />
+        <input type='submit' value="Search" />
       </form>
     </div>
   );
@@ -44,11 +60,19 @@ const GetInputField = () => {
   return (
     <div>
       <form method="GET" action='/database/'>
-        <input name="url" type="text" placeholder="url" />
-        <input type='submit' value="search" />
+        <input name="url" type="text" placeholder="URL" />
+        <input type='submit' value="Search" />
       </form>
     </div>
   );
 }
+
+// const GetInputField = () => {
+//   return (
+//     <div>
+
+//     </div>
+//   );
+// }
 
 export default App;

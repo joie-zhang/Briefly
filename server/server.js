@@ -30,6 +30,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', apiRouter);
+// console.log('get request has arrived at server.js');
 app.use('/database', dbRouter);
 
 // catch-all route handler for any requests to an unknown route
