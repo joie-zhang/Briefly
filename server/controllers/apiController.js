@@ -4,6 +4,9 @@ const API_URL = 'https://api.meaningcloud.com/summarization-1.0';
 const API_KEY = '1ac19698ae6f8372bedec08e88487986';
 
 apiController.summarizeArticle = (req, res, next) => {
+  // res.locals.summary = 'here is a great article summary';
+  // return next();
+
   // capture URL from the req.body
   // console.log("req.body: ", req.body);
   // const ARTICLE_TEXT = req.body.txt;
@@ -28,13 +31,10 @@ apiController.summarizeArticle = (req, res, next) => {
     redirect: 'follow'
   };
 
-  // res.locals.articleSummary = 'here is a great article summary';
-  // return next();
-
   fetch(API_URL, requestOptions)
     .then((response) => response.json())
     // store in res.locals.articleSummary to be returned to client
-    .then((response) => res.locals.articleSummary = response.summary)
+    .then((response) => res.locals.summary = response.summary)
     .then(() => next())
     // might throw error if article length > 500 words
     .catch(error => {

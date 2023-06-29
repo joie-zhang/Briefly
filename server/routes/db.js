@@ -8,8 +8,8 @@ const router = express.Router();
 //   return res.status(200).json(res.locals.articleText);
 // });
 
-router.get('/summary', dbController.getArticleSummary, (req, res) => {
-  return res.status(200).json(res.locals.articleSummary);
+router.get('/', dbController.getArticleSummary, (req, res) => {
+  return res.status(200).json(res.locals.summary);
 });
 
 module.exports = router;

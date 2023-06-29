@@ -16,14 +16,14 @@ const Schema = mongoose.Schema;
 
 // sets a schema for the 'articles' collection
 const articlesSchema = new Schema({
-  url: { type: String, required: true },
-  summary: { type: String, required: true, default: 'Not yet summarized' }, 
+  url: { type: String, required: true, unique: true },
+  summary: { type: String, default: 'Not yet summarized' }, 
   createdAt: { type: Date, default: Date.now },
   // title: { type: String },
   // author: { type: String },
   // publishedOn: { type: Date },
   // text: { type: String, required: true },
-})
+});
 
 // create a model for the 'articles' collection to be exported
 const Articles = mongoose.model('article', articlesSchema);
