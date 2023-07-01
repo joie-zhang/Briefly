@@ -16,7 +16,7 @@ const Schema = mongoose.Schema;
 
 // sets a schema for the 'articles' collection
 const articlesSchema = new Schema({
-  url: { type: String, required: true, unique: true },
+  url: { type: String, required: true },
   summary: { type: String, default: 'Not yet summarized' }, 
   createdAt: { type: Date, default: Date.now },
   // title: { type: String },
